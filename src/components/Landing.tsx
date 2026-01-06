@@ -2,10 +2,11 @@ import { useState } from "react";
 
 export const Landing = () =>{
 
-    const [isInitialised, setisInitialised] = useState<boolean>(false);
     return(
-        <div>
-            Landing
+        <div className="min-h-screen flex justify-center items-center"> 
+            <div className="">
+                Landing2
+            </div>
         </div>
     );
 }

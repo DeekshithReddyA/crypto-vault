@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { Landing } from './components/Landing';
-import { Dashboard } from './components/Dashboard';
+import { ThemeContextProvider } from './components/context/themeContextProvider';
+import { Parent } from './components/Parent';
+
 function App() {
-  const [isInitialised, setisInitialised] = useState<boolean>(false);
 return(
-  <>
-    {(isInitialised === false) ? <Landing /> : <Dashboard />}
-  </>
+  <ThemeContextProvider>
+    <Parent />
+  </ThemeContextProvider>
 );
 }
 
