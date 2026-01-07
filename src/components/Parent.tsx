@@ -6,7 +6,7 @@ export const Parent = () =>{
     const [isInitialised, setIsInitialised] = useState<boolean>(false);
     return(
         <>
-        {(isInitialised === false) ? <Landing /> : <Dashboard />}
+        {(isInitialised === false) ? <Landing setIsInitialised={setIsInitialised}/> : <Dashboard />}
         </>
     )
 }
