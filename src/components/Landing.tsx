@@ -1,12 +1,27 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { StarIcon, ImportIcon } from "./icons/Icons";
 import { WalletIcon } from "./icons/Wallet";
 import { LargeButton } from "./ui/LargeButton";
+import { generateMnemonic } from "bip39";
 
 
+interface LandingType{
+    setIsInitialised : any,
+    setSeedPhrase : any
+}
 
-export const Landing = ({setIsInitialised} : {setIsInitialised: any}) =>{
+export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
     const [isImportPage, setIsImportPage] = useState<boolean>(false);
+
+    const generateSeedPhrase = () => {
+        const mnemonic = generateMnemonic();
+        
+        window.localStorage.setItem("mnemonic", mnemonic);
+        window.localStorage.setItem("isInitialised", "true");
+        setSeedPhrase(mnemonic);
+        setIsInitialised(true);
+
+    }
 
     return(
         <div className="min-h-screen relative overflow-h-hidden flex justify-center items-center bg-neutral-950"> 
@@ -33,7 +48,7 @@ export const Landing = ({setIsInitialised} : {setIsInitialised: any}) =>{
 
                             </textarea>
                         </div>
-                        <div className="m-5 flex w-full">
+                        <div className="m-5 flex w-full space-x-2">
                             <div className="flex justify-center p-2 w-1/2 bg-black border border-neutral-800 rounded-xl text-neutral-200 hover:cursor-pointer hover:bg-violet-500/80"
                             onClick={()=>{
                                 setIsImportPage(false);
@@ -48,7 +63,7 @@ export const Landing = ({setIsInitialised} : {setIsInitialised: any}) =>{
                     :
                      <div className="w-full space-y-4 m-2">
                         <LargeButton onClick={()=>{
-                            setIsInitialised(true);
+                            generateSeedPhrase();
                         }} title="Create New Wallet" description="Generate a new 12-word seed phrase" Logo={<StarIcon size="24"/>} logoColor="bg-green-900/30 text-green-500 group-hover:bg-green-800/30" arrowColor="bg-green-800/30 group-hover:bg-green-600/90" hoverColor="hover:border-green-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"/>
                         <LargeButton onClick={()=>{
                             setIsImportPage(true);
