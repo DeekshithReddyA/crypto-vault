@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, type ReactEventHandler } from "react";
 import { WalletIcon } from "./icons/Wallet";
-import { SidebarAccount } from "./SidebarAccount";
+import { SidebarCoin } from "./SidebarCoins";
 import { EthIcon, SolanaIcon } from "./icons/Icons";
 
 interface SidebarType {
@@ -49,24 +49,30 @@ export const Sidebar = ({
       {/* Wallets */}
       <div className="m-4">
           <div className="mb-4 text-neutral-400 tracking-wider text-xs font-semibold">WALLETS</div>
-        <SidebarAccount
+        <SidebarCoin
           name="Solana"
-          dropDownOnClick={() => {
+          dropDownOnClick={(e:Event) => {
+            e.stopPropagation();
             setSolDropDown((val) => !val);
           }}
           dropDown={solDropDown}
           accounts={accounts.SOL}
-          addOnClick={() => generateSolanaWallet()}
+          addOnClick={(e: Event) => {
+            generateSolanaWallet();
+          }}
           Logo={<SolanaIcon size="24"/>}
         />
-        <SidebarAccount
+        <SidebarCoin
           name="Ethereum"
           dropDownOnClick={() => {
             setEthDropDown((val) => !val);
           }}
           dropDown={ethDropDown}
           accounts={accounts.ETH}
-          addOnClick={() => generateEthereumWallet()}
+          addOnClick={(e : Event) => {
+            e.stopPropagation();
+            generateEthereumWallet();
+          }}
           Logo={<EthIcon size="24"/>}
         />
       </div>

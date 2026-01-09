@@ -1,6 +1,8 @@
 import type { ReactElement } from "react"
+import { SidebarAccount } from "./SidebarAccounts"
+import { PlusIcon } from "./icons/Icons"
 
-interface SidebarAccountType {
+interface SidebarCoinType {
     name : string,
     dropDownOnClick: any,
     dropDown: boolean,
@@ -15,7 +17,7 @@ interface SidebarAccountType {
 }
 
 
-export const SidebarAccount = ({ name , dropDownOnClick, dropDown, accounts, addOnClick, Logo }: SidebarAccountType) => {
+export const SidebarCoin = ({name , dropDownOnClick, dropDown, accounts, addOnClick, Logo }: SidebarCoinType) => {
     return (
         <div className="my-2">
            <div className="hover:cursor-pointer space-y-2" onClick={dropDownOnClick}>
@@ -35,19 +37,24 @@ export const SidebarAccount = ({ name , dropDownOnClick, dropDown, accounts, add
                             </div>
                     }
                 </div>
+            </div>
                     {dropDown &&(
                         <div className="flex flex-col">
-                        {accounts.map((account) => (
-                            <div className="">
-                                {account.name}
+                        {accounts.map((account, index) => (
+                            <div className="my-2 ml-4">
+                                <SidebarAccount name={account.name} index={index + 1}/>
                             </div>
                         ))}
-                        <div className="" onClick={addOnClick}>
-                            Add account
+                        <div className="flex items-center gap-2 p-1 rounded-xl text-neutral-500 mx-6 my-1 hover:bg-green-900/20 hover:text-green-500/80" onClick={addOnClick}>
+                            <div>
+                                <PlusIcon size="14" />
+                            </div>
+                            <div className="text-xs">
+                                {`Add ${name} Account`}
+                            </div>
                         </div>
                      </div>
                     )}
-            </div>
         </div>
     )
 }

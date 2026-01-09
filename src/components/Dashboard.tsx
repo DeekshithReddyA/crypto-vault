@@ -71,7 +71,7 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             const newAccounts = {...accounts, 
                 "SOL" : [...accounts.SOL, {
                     path,
-                    name : path,
+                    name : `Account ${numAccounts.SOL}`,
                     privateKey,
                     publicKey
                 }]
@@ -96,7 +96,7 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             "ETH" : [...accounts.ETH,
                     {
                     path,
-                    name : path,
+                    name : `Account ${numAccounts.ETH}`,
                     publicKey : node.publicKey,
                     privateKey : node.privateKey
                 }
