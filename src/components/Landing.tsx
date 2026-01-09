@@ -24,7 +24,7 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
     }
 
     return(
-        <div className="min-h-screen relative overflow-h-hidden flex justify-center items-center bg-neutral-950"> 
+        <div className="min-h-screen relative overflow-hidden flex justify-center items-center bg-neutral-950"> 
             <div className="absolute top-1/8 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-green-400/5 blur-3xl"></div>
             <div className="flex flex-col items-center gap-2 p-4 w-1/3 z-10">
                 <div className="p-4 bg-green-900 rounded-lg shadow-[0_0_40px_rgba(34,197,94,0.3)]">

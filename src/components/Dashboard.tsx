@@ -110,16 +110,16 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
 
 
     return(
-        <div className="flex w-full min-h-screen">
+        <div className="flex min-h-screen">
             
             <div className="w-1/6 bg-slate-950">
                 <Sidebar accounts={accounts} generateSolanaWallet={generateSolanaWallet} generateEthereumWallet={generateEtheriumWallet}/>
             </div>
-            <div className="w-full">
+            <div className="flex-1 flex flex-col">
                 <div className="bg-slate-950/90">
                     <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised}/>
                 </div>
-                <div className="h-full bg-slate-900">
+                <div className="flex-1 bg-slate-900">
                     <Account />
                 </div>
             </div>
