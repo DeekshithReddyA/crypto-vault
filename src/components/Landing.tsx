@@ -35,7 +35,7 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
                 <div className="text-3xl text-white font-bold m-4">
                     CryptoVault
                 </div>
-                {isImportPage ? 
+                {/* {isImportPage ? 
                     <div className="flex flex-col items-center space-y-2 w-full">
                         <div className="text-xl font-semibold tracking-wide">
                             Import Wallet
@@ -60,16 +60,16 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
                             </div>
                         </div>
                     </div> 
-                    :
+                    : */}
                      <div className="w-full space-y-4 m-2">
                         <LargeButton onClick={()=>{
                             generateSeedPhrase();
                         }} title="Create New Wallet" description="Generate a new 12-word seed phrase" Logo={<StarIcon size="24"/>} logoColor="bg-green-900/30 text-green-500 group-hover:bg-green-800/30" arrowColor="bg-green-800/30 group-hover:bg-green-600/90" hoverColor="hover:border-green-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"/>
-                        <LargeButton onClick={()=>{
+                        {/* <LargeButton onClick={()=>{
                             setIsImportPage(true);
-                        }} title="Import Wallet" description="Use your existing recovery seed phrase" Logo={<ImportIcon size="24" />} logoColor="bg-violet-900/30 text-violet-500 group-hover:bg-violet-800/30" arrowColor="bg-violet-800/30 group-hover:bg-violet-600/90" hoverColor="hover:border-violet-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"/>
+                        }} title="Import Wallet" description="Use your existing recovery seed phrase" Logo={<ImportIcon size="24" />} logoColor="bg-violet-900/30 text-violet-500 group-hover:bg-violet-800/30" arrowColor="bg-violet-800/30 group-hover:bg-violet-600/90" hoverColor="hover:border-violet-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"/> */}
                     </div>
-                } 
+                {/* }  */}
             </div>
         </div>
     );

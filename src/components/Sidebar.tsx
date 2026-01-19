@@ -31,8 +31,8 @@ export const Sidebar = ({
   selectedAccount,
   setSelectedAccount
 }: SidebarType) => {
-  const [solDropDown, setSolDropDown] = useState<boolean>(true);
-  const [ethDropDown, setEthDropDown] = useState<boolean>(true);
+  const [solDropDown, setSolDropDown] = useState<boolean>(false);
+  const [ethDropDown, setEthDropDown] = useState<boolean>(false);
 
   return (
     <div className="">

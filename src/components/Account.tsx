@@ -22,6 +22,23 @@ export const Account = ({selectedAccount} : AccountType) => {
     // useEffect(()=>{
     //     setValue(name)
     // },[])
+
+    // Show message if no account is selected
+    if (!selectedAccount.publicKey) {
+        return (
+            <div className="w-full h-full flex justify-center items-center">
+                <div className="text-center">
+                    <div className="text-2xl font-semibold text-neutral-300 mb-2">
+                        No Account Selected
+                    </div>
+                    <div className="text-neutral-500">
+                        Create or open an account from the sidebar to get started
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="w-full h-full flex justify-center items-center">
             <div className="w-1/2">
@@ -63,12 +80,12 @@ export const Account = ({selectedAccount} : AccountType) => {
             <div className="font-bold text-3xl text-neutral-200 tracking-wide">
                 {selectedAccount.name}
             </div>
-                <div>
+                {/* <div>
                     {selectedAccount.publicKey}
                 </div>
                 <div>
                     Derivation m/44'/1'/0
-                </div>
+                </div> */}
 {/* 
                 <div className="m-2 p-5 bg-gray-800 rounded-xl">
                     <div className="text-xl font-semibold text-neutral-400 tracking-wide">
@@ -151,7 +168,7 @@ export const Account = ({selectedAccount} : AccountType) => {
                             }
                             </div>
                         </div>
-                        <div className="bg-black/50 p-2 rounded-lg text-sm">
+                        <div className="bg-black/50 p-2 rounded-lg text-sm break-all">
                             <div className={`${isHidden ? "blur-xs" : ""}`}>
                                 {selectedAccount.privateKey}
                             </div>

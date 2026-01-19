@@ -8,6 +8,7 @@ import { Sidebar } from "./Sidebar"
 import {  useEffect, useState } from "react";
 import {ethers} from "ethers";
 import bs58 from "bs58";
+import { CopyIcon, TickIcon } from "./icons/Icons";
 
 
 interface DashboardType{
@@ -50,7 +51,10 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
     const [accounts, setAccounts] = useState<AccountType>({
         "SOL" : [],
         "ETH" : []
-    })
+    });
+
+    const [seedModal, setSeedModal] = useState<boolean>(false);
+
     useEffect(()=>{
         if(window.localStorage.getItem("accounts") !== null){
 
@@ -119,6 +123,16 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
 
 
 
+    const [isSeedCopied, setIsSeedCopied] = useState<boolean>(false);
+
+    const handleCopySeed = () => {
+        navigator.clipboard.writeText(seedPhrase);
+        setIsSeedCopied(true);
+        setTimeout(() => {
+            setIsSeedCopied(false);
+        }, 3000);
+    };
+
     return(
         <div className="flex min-h-screen">
             
@@ -127,12 +141,56 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             </div>
             <div className="flex-1 flex flex-col">
                 <div className="bg-slate-950/90">
-                    <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised}/>
+                    <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised} setSeedModal={setSeedModal}/>
                 </div>
                 <div className="flex-1 bg-slate-900">
                     <Account selectedAccount={selectedAccount}/>
                 </div>
             </div>
+
+            {/* Seed Phrase Modal */}
+            {seedModal && (
+                <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50" onClick={() => setSeedModal(false)}>
+                    <div className="bg-slate-800 p-6 rounded-2xl w-[500px] max-w-[90%]" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center mb-4">
+                            <div className="text-xl font-bold text-neutral-200">Your Seed Phrase</div>
+                            <div 
+                                className="text-neutral-400 hover:text-white cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg"
+                                onClick={() => setSeedModal(false)}
+                            >
+                                ✕
+                            </div>
+                        </div>
+                        <div className="text-amber-500 text-sm mb-4 p-3 bg-amber-500/10 rounded-lg">
+                            Never share your seed phrase with anyone. Anyone with this phrase can access your wallet.
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 mb-4">
+                            {seedPhrase.split(' ').map((word, index) => (
+                                <div key={index} className="bg-slate-900 p-2 rounded-lg text-sm">
+                                    <span className="text-neutral-500 mr-2">{index + 1}.</span>
+                                    <span className="text-neutral-200">{word}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <button 
+                            className="w-full flex justify-center items-center gap-2 p-3 bg-violet-600 hover:bg-violet-700 rounded-xl transition-colors cursor-pointer"
+                            onClick={handleCopySeed}
+                        >
+                            {isSeedCopied ? (
+                                <>
+                                    <TickIcon size="16" />
+                                    <span className="text-green-400">Copied!</span>
+                                </>
+                            ) : (
+                                <>
+                                    <CopyIcon size="16" />
+                                    <span>Copy Seed Phrase</span>
+                                </>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            )}
             
         </div>
     )

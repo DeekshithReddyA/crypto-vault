@@ -43,10 +43,15 @@ export const SidebarCoin = ({name , dropDownOnClick, dropDown, accounts, addOnCl
                     {dropDown &&(
                         <div className="flex flex-col">
                         {accounts.map((account, index) => (
-                            <div className="my-2 ml-4">
-                                <SidebarAccount name={account.name} index={index + 1} onClick={()=>{
-                                    setSelectedAccount(account);
-                                }}/>
+                            <div className="my-2 ml-4" key={index}>
+                                <SidebarAccount 
+                                    name={account.name} 
+                                    index={index + 1} 
+                                    isSelected={selectedAccount === account} 
+                                    onClick={() => {
+                                        setSelectedAccount(account);
+                                    }}
+                                />
                             </div>
                         ))}
                         <div className="flex items-center gap-2 p-1 rounded-xl text-neutral-500 mx-6 my-1 hover:bg-green-900/20 hover:text-green-500/80" onClick={addOnClick}>
