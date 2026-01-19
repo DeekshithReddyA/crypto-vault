@@ -7,6 +7,7 @@ import { Navbar } from "./Navbar"
 import { Sidebar } from "./Sidebar"
 import {  useEffect, useState } from "react";
 import {ethers} from "ethers";
+import bs58 from "bs58";
 
 
 interface DashboardType{
@@ -35,6 +36,13 @@ interface AccountType {
     }[]
 }
 export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : DashboardType) =>{
+    const [selectedAccount , setSelectedAccount] = useState({
+        name : "",
+        path : "",
+        publicKey : "",
+        privateKey : ""
+    });
+
     const [numAccounts, setNumAccounts] = useState<numAccountsType>({
         "SOL" : 0,
         "ETH" : 0
@@ -53,7 +61,8 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
                 "ETH" : accountsLocal.ETH.length
             });
         }
-    },[])
+    },[]);
+
  
     const generateSolanaWallet = () =>{
 
@@ -61,8 +70,9 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             const path = `m/44'/501'/${numAccounts["SOL"]}'/0'`; // This is the derivation path
             const derivedSeed = derivePath(path, seed.toString("hex")).key;
             const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
+
             const publicKey = Keypair.fromSecretKey(secret).publicKey.toBase58();
-            const privateKey = Keypair.fromSecretKey(secret).secretKey.toString();
+            const privateKey = bs58.encode(secret);
             
             setNumAccounts({
                 "SOL" : numAccounts["SOL"] + 1,
@@ -113,14 +123,14 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
         <div className="flex min-h-screen">
             
             <div className="w-1/6 bg-slate-950">
-                <Sidebar accounts={accounts} generateSolanaWallet={generateSolanaWallet} generateEthereumWallet={generateEtheriumWallet}/>
+                <Sidebar accounts={accounts} generateSolanaWallet={generateSolanaWallet} generateEthereumWallet={generateEtheriumWallet} selectedAccount={selectedAccount} setSelectedAccount={setSelectedAccount}/>
             </div>
             <div className="flex-1 flex flex-col">
                 <div className="bg-slate-950/90">
                     <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised}/>
                 </div>
                 <div className="flex-1 bg-slate-900">
-                    <Account />
+                    <Account selectedAccount={selectedAccount}/>
                 </div>
             </div>
             

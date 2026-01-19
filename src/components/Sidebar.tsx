@@ -20,12 +20,16 @@ interface SidebarType {
   };
   generateSolanaWallet: any;
   generateEthereumWallet: any;
+  selectedAccount : {};
+  setSelectedAccount : any;
 }
 
 export const Sidebar = ({
   accounts,
   generateSolanaWallet,
   generateEthereumWallet,
+  selectedAccount,
+  setSelectedAccount
 }: SidebarType) => {
   const [solDropDown, setSolDropDown] = useState<boolean>(true);
   const [ethDropDown, setEthDropDown] = useState<boolean>(true);
@@ -61,6 +65,8 @@ export const Sidebar = ({
             generateSolanaWallet();
           }}
           Logo={<SolanaIcon size="24"/>}
+          selectedAccount={selectedAccount}
+          setSelectedAccount={setSelectedAccount}
         />
         <SidebarCoin
           name="Ethereum"
@@ -74,6 +80,9 @@ export const Sidebar = ({
             generateEthereumWallet();
           }}
           Logo={<EthIcon size="24"/>}
+          selectedAccount={selectedAccount}
+          setSelectedAccount={setSelectedAccount}
+
         />
       </div>
     </div>
