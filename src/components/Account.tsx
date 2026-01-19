@@ -28,10 +28,10 @@ export const Account = ({selectedAccount} : AccountType) => {
         return (
             <div className="w-full h-full flex justify-center items-center">
                 <div className="text-center">
-                    <div className="text-2xl font-semibold text-neutral-300 mb-2">
+                    <div className="text-2xl font-bold text-zinc-200 mb-2">
                         No Account Selected
                     </div>
-                    <div className="text-neutral-500">
+                    <div className="text-zinc-500">
                         Create or open an account from the sidebar to get started
                     </div>
                 </div>
@@ -77,7 +77,7 @@ export const Account = ({selectedAccount} : AccountType) => {
                     </div>
                 </div>
             } */}
-            <div className="font-bold text-3xl text-neutral-200 tracking-wide">
+            <div className="font-bold text-3xl text-zinc-100 tracking-tight mb-8">
                 {selectedAccount.name}
             </div>
                 {/* <div>
@@ -101,76 +101,79 @@ export const Account = ({selectedAccount} : AccountType) => {
                     </div>
                 </div> */}
 
-                <div className="p-5 bg-gray-800 rounded-xl">
-                    <div className="text-lg font-semibold tracking-tight m-1">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl">
+                    <div className="text-lg font-medium tracking-tight m-1 mb-4 text-zinc-200">
                         Wallet Keys
                     </div>
-                    <div className="m-3">
-                        <div className="flex justify-between items-center">
-                            <div className="text-neutral-400">
-                                Public Key (Address)
-                            </div>
-                            {isPublicCopied ? <div className="text-green-600 p-2 hover:bg-neutral-500/20 rounded-lg">
-                                <TickIcon size="16" />
-                            </div> :
-                                <div className="hover:cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg" onClick={()=>{
-                                    navigator.clipboard.writeText("publicKey is copied");
-                                    setIsPublicCopied(true);
-
-                                    setTimeout(()=>{
-                                        setIsPublicCopied(false);
-
-                                    },3000);
-                                }}> 
-                                    <CopyIcon size="16" />
-                            </div>
-                            }
-                        </div>
-                        <div className="bg-black/50 p-2 rounded-lg text-sm">
-                            {selectedAccount.publicKey}
-                        </div>
-
-
-                        <div className="flex justify-between items-center mt-5">
-                            <div className="text-neutral-400">
-                                Private Key (Secret)
-                            </div>
-                            <div className="flex">
-                            {
-                                isHidden ? 
-                                <div className="hover:cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg"
-                                    onClick={()=>{
-                                        setIsHidden(false);
-                                    }}>
-                                    <EyeIcon size="18" />
-                                </div> : 
-                                <div className="hover:cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg"
-                                    onClick={()=>{
-                                        setIsHidden(true);
-                                    }}>
-                                    <EyeOffIcon size="18" />
+                    <div className="space-y-6">
+                        <div>
+                            <div className="flex justify-between items-center mb-2">
+                                <div className="text-zinc-400 text-sm font-medium">
+                                    Public Key (Address)
                                 </div>
-                            }
-                            {isPrivateCopied ? <div className="text-green-600 p-2 hover:bg-neutral-500/20 rounded-lg">
-                                <TickIcon size="16" />
-                            </div> :
-                                <div className="hover:cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg" onClick={()=>{
-                                    navigator.clipboard.writeText("publicKey is copied");
-                                    setIsPrivateCopied(true);
+                                {isPublicCopied ? <div className="text-emerald-400 p-2 hover:bg-zinc-800 rounded-lg transition-colors">
+                                    <TickIcon size="16" />
+                                </div> :
+                                    <div className="text-zinc-500 hover:text-zinc-200 cursor-pointer p-2 hover:bg-zinc-800 rounded-lg transition-colors" onClick={()=>{
+                                        navigator.clipboard.writeText(selectedAccount.publicKey);
+                                        setIsPublicCopied(true);
 
-                                    setTimeout(()=>{
-                                        setIsPrivateCopied(false);
+                                        setTimeout(()=>{
+                                            setIsPublicCopied(false);
 
-                                    },3000);
-                                }}> 
-                                    <CopyIcon size="16" />
+                                        },3000);
+                                    }}> 
+                                        <CopyIcon size="16" />
+                                </div>
+                                }
                             </div>
-                            }
+                            <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-zinc-300 font-mono break-all">
+                                {selectedAccount.publicKey}
                             </div>
                         </div>
-                        <div className="bg-black/50 p-2 rounded-lg text-sm break-all">
-                            <div className={`${isHidden ? "blur-xs" : ""}`}>
-                                {selectedAccount.privateKey}
+
+                        <div>
+                            <div className="flex justify-between items-center mb-2">
+                                <div className="text-zinc-400 text-sm font-medium">
+                                    Private Key (Secret)
+                                </div>
+                                <div className="flex gap-1">
+                                {
+                                    isHidden ? 
+                                    <div className="text-zinc-500 hover:text-zinc-200 cursor-pointer p-2 hover:bg-zinc-800 rounded-lg transition-colors"
+                                        onClick={()=>{
+                                            setIsHidden(false);
+                                        }}>
+                                        <EyeIcon size="18" />
+                                    </div> : 
+                                    <div className="text-zinc-500 hover:text-zinc-200 cursor-pointer p-2 hover:bg-zinc-800 rounded-lg transition-colors"
+                                        onClick={()=>{
+                                            setIsHidden(true);
+                                        }}>
+                                        <EyeOffIcon size="18" />
+                                    </div>
+                                }
+                                {isPrivateCopied ? <div className="text-emerald-400 p-2 hover:bg-zinc-800 rounded-lg transition-colors">
+                                    <TickIcon size="16" />
+                                </div> :
+                                    <div className="text-zinc-500 hover:text-zinc-200 cursor-pointer p-2 hover:bg-zinc-800 rounded-lg transition-colors" onClick={()=>{
+                                        navigator.clipboard.writeText(selectedAccount.privateKey);
+                                        setIsPrivateCopied(true);
+
+                                        setTimeout(()=>{
+                                            setIsPrivateCopied(false);
+
+                                        },3000);
+                                    }}> 
+                                        <CopyIcon size="16" />
+                                </div>
+                                }
+                                </div>
+                            </div>
+                            <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-zinc-300 font-mono break-all group">
+                                <div className={`${isHidden ? "blur-md opacity-50 group-hover:opacity-100 transition-opacity" : ""}`}>
+                                    {selectedAccount.privateKey}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -54,11 +54,11 @@ export const SidebarCoin = ({name , dropDownOnClick, dropDown, accounts, addOnCl
                                 />
                             </div>
                         ))}
-                        <div className="flex items-center gap-2 p-1 rounded-xl text-neutral-500 mx-6 my-1 hover:bg-green-900/20 hover:text-green-500/80" onClick={addOnClick}>
+                        <div className="flex items-center gap-2 p-2 rounded-xl text-zinc-500 mx-4 my-1 hover:bg-zinc-900 hover:text-zinc-300 transition-colors cursor-pointer" onClick={addOnClick}>
                             <div>
                                 <PlusIcon size="14" />
                             </div>
-                            <div className="text-xs">
+                            <div className="text-xs font-medium">
                                 {`Add ${name} Account`}
                             </div>
                         </div>

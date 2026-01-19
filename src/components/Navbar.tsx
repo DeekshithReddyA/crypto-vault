@@ -10,15 +10,15 @@ export const Navbar = ({ seedPhrase, setIsInitialised, setSeedModal }: NavbarTyp
   return (
     <div className="h-16 flex justify-end items-center">
       <div className="flex gap-2">
-        <div className="flex px-4 py-2 hover:bg-violet-800/90 cursor-pointer rounded-xl justify-center items-center gap-1"
+        <div className="flex px-4 py-2 hover:bg-zinc-800 text-zinc-300 hover:text-white cursor-pointer rounded-xl justify-center items-center gap-2 transition-all"
         onClick={()=>{setSeedModal(true)}}>
           <div className="">
             <KeyIcon size="16" />
           </div>
-          <div>View Seed</div>
+          <div className="font-medium">View Seed</div>
         </div>
         <div
-          className="flex items-center gap-1 px-4 py-2 mr-2 text-red-500 hover:bg-red-800/10 cursor-pointer rounded-xl"
+          className="flex items-center gap-2 px-4 py-2 mr-4 text-rose-500 hover:bg-rose-500/10 hover:text-rose-400 cursor-pointer rounded-xl transition-all"
           onClick={() => {
             window.localStorage.setItem("isInitialised", "false");
             window.localStorage.removeItem("mnemonic");

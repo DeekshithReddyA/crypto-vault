@@ -36,23 +36,23 @@ export const Sidebar = ({
 
   return (
     <div className="">
-      <div className="m-2 p-1">
-        <div className="flex items-center gap-2">
-          <div className="p-2 bg-green-950 rounded-lg shadow-[0_0_40px_rgba(34,197,94,0.3)]">
-            <div className="text-green-300">
-              <WalletIcon size="20" />
+      <div className="m-4 mb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
+            <div className="text-indigo-400">
+              <WalletIcon size="24" />
             </div>
           </div>
-          <div className="font-semibold tracking-wide">
-            <div>CryptoVault</div>
-            <div className="text-xs text-neutral-600">HD Wallet</div>
+          <div className="font-bold tracking-tight">
+            <div className="text-zinc-100 text-lg">CryptoVault</div>
+            <div className="text-xs text-zinc-500 font-medium tracking-wider">HD WALLET</div>
           </div>
         </div>
       </div>
-      <div className="w-full border border-t-0 border-neutral-800"></div>
+      <div className="w-full border-t border-zinc-900"></div>
       {/* Wallets */}
       <div className="m-4">
-          <div className="mb-4 text-neutral-400 tracking-wider text-xs font-semibold">WALLETS</div>
+          <div className="mb-4 text-zinc-500 tracking-wider text-xs font-bold pl-2">WALLETS</div>
         <SidebarCoin
           name="Solana"
           dropDownOnClick={(e:Event) => {

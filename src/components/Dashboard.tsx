@@ -134,56 +134,56 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
     };
 
     return(
-        <div className="flex min-h-screen">
+        <div className="flex min-h-screen bg-zinc-950">
             
-            <div className="w-1/6 bg-slate-950">
+            <div className="w-1/6 bg-zinc-950 border-r border-zinc-900">
                 <Sidebar accounts={accounts} generateSolanaWallet={generateSolanaWallet} generateEthereumWallet={generateEtheriumWallet} selectedAccount={selectedAccount} setSelectedAccount={setSelectedAccount}/>
             </div>
             <div className="flex-1 flex flex-col">
-                <div className="bg-slate-950/90">
+                <div className="bg-zinc-950">
                     <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised} setSeedModal={setSeedModal}/>
                 </div>
-                <div className="flex-1 bg-slate-900">
+                <div className="flex-1 bg-zinc-950">
                     <Account selectedAccount={selectedAccount}/>
                 </div>
             </div>
 
             {/* Seed Phrase Modal */}
             {seedModal && (
-                <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50" onClick={() => setSeedModal(false)}>
-                    <div className="bg-slate-800 p-6 rounded-2xl w-[500px] max-w-[90%]" onClick={(e) => e.stopPropagation()}>
-                        <div className="flex justify-between items-center mb-4">
-                            <div className="text-xl font-bold text-neutral-200">Your Seed Phrase</div>
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50" onClick={() => setSeedModal(false)}>
+                    <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl w-[500px] max-w-[90%] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center mb-6">
+                            <div className="text-xl font-bold text-zinc-100">Your Seed Phrase</div>
                             <div 
-                                className="text-neutral-400 hover:text-white cursor-pointer p-2 hover:bg-neutral-500/20 rounded-lg"
+                                className="text-zinc-500 hover:text-zinc-200 cursor-pointer p-2 hover:bg-zinc-800 rounded-lg transition-colors"
                                 onClick={() => setSeedModal(false)}
                             >
                                 ✕
                             </div>
                         </div>
-                        <div className="text-amber-500 text-sm mb-4 p-3 bg-amber-500/10 rounded-lg">
+                        <div className="text-amber-500 text-sm mb-6 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                             Never share your seed phrase with anyone. Anyone with this phrase can access your wallet.
                         </div>
-                        <div className="grid grid-cols-3 gap-2 mb-4">
+                        <div className="grid grid-cols-3 gap-3 mb-6">
                             {seedPhrase.split(' ').map((word, index) => (
-                                <div key={index} className="bg-slate-900 p-2 rounded-lg text-sm">
-                                    <span className="text-neutral-500 mr-2">{index + 1}.</span>
-                                    <span className="text-neutral-200">{word}</span>
+                                <div key={index} className="bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm flex items-center">
+                                    <span className="text-zinc-600 mr-3 select-none">{index + 1}.</span>
+                                    <span className="text-zinc-200 font-medium">{word}</span>
                                 </div>
                             ))}
                         </div>
                         <button 
-                            className="w-full flex justify-center items-center gap-2 p-3 bg-violet-600 hover:bg-violet-700 rounded-xl transition-colors cursor-pointer"
+                            className="w-full flex justify-center items-center gap-2 p-3.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-all font-medium text-white shadow-lg shadow-indigo-900/20"
                             onClick={handleCopySeed}
                         >
                             {isSeedCopied ? (
                                 <>
-                                    <TickIcon size="16" />
-                                    <span className="text-green-400">Copied!</span>
+                                    <TickIcon size="18" />
+                                    <span className="text-white">Copied!</span>
                                 </>
                             ) : (
                                 <>
-                                    <CopyIcon size="16" />
+                                    <CopyIcon size="18" />
                                     <span>Copy Seed Phrase</span>
                                 </>
                             )}

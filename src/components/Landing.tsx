@@ -24,16 +24,21 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
     }
 
     return(
-        <div className="min-h-screen relative overflow-hidden flex justify-center items-center bg-neutral-950"> 
-            <div className="absolute top-1/8 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-green-400/5 blur-3xl"></div>
-            <div className="flex flex-col items-center gap-2 p-4 w-1/3 z-10">
-                <div className="p-4 bg-green-900 rounded-lg shadow-[0_0_40px_rgba(34,197,94,0.3)]">
-                    <div className="text-green-300">
-                        <WalletIcon size="32" />
+        <div className="min-h-screen relative overflow-hidden flex justify-center items-center bg-zinc-950"> 
+            <div className="absolute top-1/8 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-indigo-500/10 blur-[100px]"></div>
+            <div className="flex flex-col items-center gap-6 p-4 w-1/3 z-10">
+                <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-2xl shadow-xl backdrop-blur-sm">
+                    <div className="text-indigo-400">
+                        <WalletIcon size="40" />
                     </div>
                 </div>
-                <div className="text-3xl text-white font-bold m-4">
-                    CryptoVault
+                <div className="flex flex-col items-center gap-1 mb-4">
+                    <div className="text-4xl text-white font-bold tracking-tight">
+                        CryptoVault
+                    </div>
+                    <div className="text-zinc-400 text-sm font-medium">
+                        Secure HD Wallet Generator
+                    </div>
                 </div>
                 {/* {isImportPage ? 
                     <div className="flex flex-col items-center space-y-2 w-full">
@@ -62,9 +67,16 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
                     </div> 
                     : */}
                      <div className="w-full space-y-4 m-2">
-                        <LargeButton onClick={()=>{
-                            generateSeedPhrase();
-                        }} title="Create New Wallet" description="Generate a new 12-word seed phrase" Logo={<StarIcon size="24"/>} logoColor="bg-green-900/30 text-green-500 group-hover:bg-green-800/30" arrowColor="bg-green-800/30 group-hover:bg-green-600/90" hoverColor="hover:border-green-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"/>
+                        <LargeButton 
+                            onClick={()=>{ generateSeedPhrase(); }} 
+                            title="Create New Wallet" 
+                            description="Generate a new 12-word seed phrase" 
+                            Logo={<StarIcon size="24"/>} 
+                            logoColor="bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20" 
+                            arrowColor="bg-zinc-800 text-zinc-400 group-hover:bg-indigo-500 group-hover:text-white" 
+                            hoverColor="hover:border-indigo-500/30 hover:bg-zinc-900/80" 
+                            shadowColor="hover:shadow-lg hover:shadow-indigo-500/10"
+                        />
                         {/* <LargeButton onClick={()=>{
                             setIsImportPage(true);
                         }} title="Import Wallet" description="Use your existing recovery seed phrase" Logo={<ImportIcon size="24" />} logoColor="bg-violet-900/30 text-violet-500 group-hover:bg-violet-800/30" arrowColor="bg-violet-800/30 group-hover:bg-violet-600/90" hoverColor="hover:border-violet-500/90" shadowColor="hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"/> */}
