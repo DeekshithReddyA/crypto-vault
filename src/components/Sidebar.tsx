@@ -1,4 +1,4 @@
-import { useState, type ReactEventHandler } from "react";
+import { useState } from "react";
 import { WalletIcon } from "./icons/Wallet";
 import { SidebarCoin } from "./SidebarCoins";
 import { EthIcon, SolanaIcon } from "./icons/Icons";
@@ -61,7 +61,7 @@ export const Sidebar = ({
           }}
           dropDown={solDropDown}
           accounts={accounts.SOL}
-          addOnClick={(e: Event) => {
+          addOnClick={() => {
             generateSolanaWallet();
           }}
           Logo={<SolanaIcon size="24"/>}

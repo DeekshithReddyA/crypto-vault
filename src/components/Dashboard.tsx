@@ -13,8 +13,7 @@ import { CopyIcon, TickIcon } from "./icons/Icons";
 
 interface DashboardType{
     seedPhrase : string
-    setIsInitialised : any,
-    isInitialised: boolean
+    setIsInitialised : any
 }
 
 interface numAccountsType{
@@ -36,7 +35,7 @@ interface AccountType {
         privateKey : string
     }[]
 }
-export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : DashboardType) =>{
+export const Dashboard = ({seedPhrase, setIsInitialised} : DashboardType) =>{
     const [selectedAccount , setSelectedAccount] = useState({
         name : "",
         path : "",
@@ -141,7 +140,7 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             </div>
             <div className="flex-1 flex flex-col">
                 <div className="bg-zinc-950">
-                    <Navbar seedPhrase={seedPhrase} setIsInitialised={setIsInitialised} setSeedModal={setSeedModal}/>
+                    <Navbar setIsInitialised={setIsInitialised} setSeedModal={setSeedModal}/>
                 </div>
                 <div className="flex-1 bg-zinc-950">
                     <Account selectedAccount={selectedAccount}/>
@@ -151,7 +150,7 @@ export const Dashboard = ({seedPhrase, setIsInitialised, isInitialised} : Dashbo
             {/* Seed Phrase Modal */}
             {seedModal && (
                 <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50" onClick={() => setSeedModal(false)}>
-                    <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl w-[500px] max-w-[90%] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl w-125 max-w-[90%] shadow-2xl" onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-center mb-6">
                             <div className="text-xl font-bold text-zinc-100">Your Seed Phrase</div>
                             <div 

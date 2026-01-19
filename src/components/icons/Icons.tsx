@@ -1,4 +1,3 @@
-import type { stripZerosLeft } from "ethers"
 import type { sizeType } from "./sizeInterface"
 
 export const StarIcon = ({size} : sizeType) => {

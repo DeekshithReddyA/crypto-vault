@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { StarIcon, ImportIcon } from "./icons/Icons";
+import { StarIcon } from "./icons/Icons";
 import { WalletIcon } from "./icons/Wallet";
 import { LargeButton } from "./ui/LargeButton";
 import { generateMnemonic } from "bip39";
@@ -11,7 +10,6 @@ interface LandingType{
 }
 
 export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
-    const [isImportPage, setIsImportPage] = useState<boolean>(false);
 
     const generateSeedPhrase = () => {
         const mnemonic = generateMnemonic();
@@ -25,7 +23,7 @@ export const Landing = ({setIsInitialised, setSeedPhrase} : LandingType) =>{
 
     return(
         <div className="min-h-screen relative overflow-hidden flex justify-center items-center bg-zinc-950"> 
-            <div className="absolute top-1/8 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-indigo-500/10 blur-[100px]"></div>
+            <div className="absolute top-1/8 left-1/2 -translate-x-1/2 w-150 h-150 rounded-full bg-indigo-500/10 blur-[100px]"></div>
             <div className="flex flex-col items-center gap-6 p-4 w-1/3 z-10">
                 <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-2xl shadow-xl backdrop-blur-sm">
                     <div className="text-indigo-400">

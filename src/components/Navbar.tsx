@@ -1,12 +1,11 @@
 import { KeyIcon, LogoutIcon } from "./icons/Icons";
 
 interface NavbarType {
-  seedPhrase: string;
   setIsInitialised: any;
   setSeedModal : any
 }
 
-export const Navbar = ({ seedPhrase, setIsInitialised, setSeedModal }: NavbarType) => {
+export const Navbar = ({ setIsInitialised, setSeedModal }: NavbarType) => {
   return (
     <div className="h-16 flex justify-end items-center">
       <div className="flex gap-2">

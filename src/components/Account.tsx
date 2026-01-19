@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { CopyIcon, EyeIcon, EyeOffIcon, PenIcon, TickIcon } from "./icons/Icons";
+import { useState } from "react";
+import { CopyIcon, EyeIcon, EyeOffIcon, TickIcon } from "./icons/Icons";
 
 interface AccountType{
     selectedAccount : {
@@ -14,7 +14,6 @@ export const Account = ({selectedAccount} : AccountType) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     const [isPublicCopied , setIsPublicCopied] = useState<boolean>(false);
     const [isPrivateCopied , setIsPrivateCopied] = useState<boolean>(false);
-    const [isCopied, setIsCopied] = useState<boolean>(false);
     // const [isRenaming , setIsRenaming] = useState<boolean>(false);
     // const [value, setValue] = useState<string>("");
 

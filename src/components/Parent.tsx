@@ -18,7 +18,7 @@ export const Parent = () =>{
 
     return(
         <>
-            {(isInitialised === false) ? <Landing setIsInitialised={setIsInitialised} setSeedPhrase={setSeedPhrase}/> : <Dashboard seedPhrase={seedPhrase} setIsInitialised={setIsInitialised} isInitialised={isInitialised}/>}
+            {(isInitialised === false) ? <Landing setIsInitialised={setIsInitialised} setSeedPhrase={setSeedPhrase}/> : <Dashboard seedPhrase={seedPhrase} setIsInitialised={setIsInitialised}/>}
         </>
     )
 }
